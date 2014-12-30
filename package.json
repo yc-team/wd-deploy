@@ -1,0 +1,29 @@
+{
+  "name": "wd-deploy",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "wd": "./bin/wdeploy"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yc-team/wd-deploy.git"
+  },
+  "keywords": [
+    "yc",
+    "deploy"
+  ],
+  "dependencies": {
+    "shelljs": "0.3.0",
+    "rimraf": "~2.2.1"
+  },
+  "author": "zhangyaochun",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/yc-team/wd-deploy/issues"
+  }
+}
