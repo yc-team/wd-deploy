@@ -3,7 +3,7 @@ require('shelljs/global');
 var rimraf = require('rimraf');
 
 module.exports = function (opts) {
-    if (!which('get')) {
+    if (!which('git')) {
       throw new Error('You shoule install git first');
       exit(1);
     }  
@@ -11,7 +11,7 @@ module.exports = function (opts) {
     var config = {
       silent: true,
       deepSilent: false,
-      message: 'commit auto by wd-deploy on ';
+      message: 'commit auto by wd-deploy on ',
       branch: 'master'
     };
 
