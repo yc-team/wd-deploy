@@ -39,7 +39,7 @@ module.exports = function (opts) {
     //没有clone过的就checkout 
     exec('git checkout ' + config.branch, {silent: config.silent});
 
-    exec('git reset --hard HEAD^', {silent: config.silent});
+    //exec('git reset --hard HEAD^', {silent: config.silent});
 
     exec('git pull', {silent: config.silent});
 
