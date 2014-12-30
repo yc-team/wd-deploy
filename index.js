@@ -1,6 +1,7 @@
 require('shelljs/global');
 
 var rimraf = require('rimraf');
+var dateFormat = require('dateformat');
 
 module.exports = function (opts) {
     if (!which('git')) {
@@ -38,8 +39,6 @@ module.exports = function (opts) {
 
     //没有clone过的就checkout 
     exec('git checkout ' + config.branch, {silent: config.silent});
-
-    //exec('git reset --hard HEAD^', {silent: config.silent});
 
     exec('git pull', {silent: config.silent});
 

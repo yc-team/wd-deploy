@@ -1,6 +1,6 @@
 {
   "name": "wd-deploy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -19,7 +19,8 @@
   ],
   "dependencies": {
     "shelljs": "0.3.0",
-    "rimraf": "~2.2.1"
+    "rimraf": "~2.2.1",
+    "dateformat": "1.0.2-1.2.3"
   },
   "author": "zhangyaochun",
   "license": "BSD-2-Clause",
