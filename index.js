@@ -12,7 +12,7 @@ module.exports = function (opts) {
     var config = {
       silent: true,
       deepSilent: false,
-      message: 'commit auto by wd-deploy on ',
+      message: '[command line] commit auto by @wd-deploy on ',
       branch: 'master'
     };
 
@@ -51,7 +51,7 @@ module.exports = function (opts) {
 
     //git commit 
     //add time or other msg your like
-    exec('git commit -m "' + config.message + dateFormat(new Date(), 'yyyy-MM-dd') + '"', {silent: config.deepSilent});
+    exec('git commit -m "' + config.message + dateFormat(new Date(), 'yyyy-mm-dd') + '"', {silent: config.deepSilent});
 
     //git push
     exec('git push', {silent: config.deepSilent})
