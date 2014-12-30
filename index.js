@@ -4,6 +4,7 @@ var rimraf = require('rimraf');
 var dateFormat = require('dateformat');
 
 module.exports = function (opts) {
+    //check git is installed or not
     if (!which('git')) {
       throw new Error('You shoule install git first');
       exit(1);
@@ -16,18 +17,22 @@ module.exports = function (opts) {
       branch: 'master'
     };
 
-    //
+    //cwd
     var cwd = process.cwd();
 
-    var dirpath = cwd;
+
     //关于创建目录的策略
+    //TODO 
+    var dirpath = cwd;
     cd(dirpath);
 
     //已经拉取了的
+    //{ code: 0, output: '# On branch master\nnothing to commit (working directory clean)\n' }
     if (exec('git status ' + dirpath, {silent: config.silent}).code !== 0) {
         cd('/..');
         rimraf(dirpath);
 
+        //TODO check remote more intelligent
         if (exec('git clone ' + config.remote + ' ' + dirpath).code !== 0) {
             throw new Error('Git clone failed');
             exit(1);
