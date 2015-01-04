@@ -9,6 +9,12 @@ silent    		Do not echo program output to console
 branch			分支支持，默认是master
 ```
 
+## how to install
+
+```javascript
+sudo npm install wd-deploy -g
+```
+
 ## how to use
 
 ```javascript

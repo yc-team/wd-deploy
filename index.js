@@ -25,7 +25,7 @@ module.exports = function (argv) {
     
     //TDOO version auto from pkg
     program
-      .version('0.1.2')
+      .version('0.2.5')
       .option('-m, --message', 'Add Commit message by yourself instead of auto')
       .option('-c, --clone <repo url>', 'Clone the defined github url at first', cloneFn)
       .option('-b, --branch', 'Choose a repo branch,default value is master')
