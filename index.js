@@ -1,6 +1,5 @@
 require('shelljs/global');
 
-var rimraf = require('rimraf');
 var dateFormat = require('dateformat');
 var program = require('commander');
 
@@ -8,24 +7,44 @@ var program = require('commander');
 
 module.exports = function (argv) {
 
+    var config = {
+        isCloned: false,
+        silent: true,
+        deepSilent: false,
+        remote: '',     //now i set '' by default instead of undefined
+        message: '[command line] commit auto by @wd-deploy on ',
+        branch: 'master'
+    };
+
+    
+    function cloneFn (val) {
+        //TODO check if it is a really repo url
+        //TODO change repo url to github url
+        config.remote = val;
+    }
+    
+    //TDOO version auto from pkg
     program
       .version('0.1.2')
       .option('-m, --message', 'Add Commit message by yourself instead of auto')
+      .option('-c, --clone <repo url>', 'Clone the defined github url at first', cloneFn)
+      .option('-b, --branch', 'Choose a repo branch,default value is master')
       .parse(argv);
 
+    
+
+    //Override by user
+    if (program.message) {
+        config.message = program.args[0];
+    }
 
     //check git is installed or not
     if (!which('git')) {
-      throw new Error('You shoule install git first');
-      exit(1);
-    }  
+        throw new Error('You should install git first');
+        exit(1);
+    }
 
-    var config = {
-      silent: true,
-      deepSilent: false,
-      message: '[command line] commit auto by @wd-deploy on ',
-      branch: 'master'
-    };
+    
 
     //cwd
     var cwd = process.cwd();
@@ -35,29 +54,40 @@ module.exports = function (argv) {
     //TODO 
     var dirpath = cwd;
     cd(dirpath);
+    console.log(1 + '' + dirpath);
 
     //已经拉取了的
     //{ code: 0, output: '# On branch master\nnothing to commit (working directory clean)\n' }
     if (exec('git status ' + dirpath, {silent: config.silent}).code !== 0) {
         cd('./..');
-        //use rimraf.sync
-        rimraf.sync(dirpath);
 
-        //TODO check remote more intelligent
+        console.log(process.cwd());
+
+        //use rimraf.sync
+        //rimraf.sync(dirpath);
+
+        //mkdir(dirpath);
+
         if (exec('git clone ' + config.remote + ' ' + dirpath).code !== 0) {
             throw new Error('Git clone failed');
             exit(1);
+        } else {
+            config.isCloned = true;
         }
+    } else {
+        config.isCloned = true;
     }
 
+    console.log(2 + '' + dirpath);
+    console.log(config);
 
     cd(dirpath);
 
-    //没有clone过的就checkout 
+    //git checkout 
     exec('git checkout ' + config.branch, {silent: config.silent});
 
+    //git pull
     exec('git pull', {silent: config.silent});
-
 
     //git add 
     exec('git add -A', {silent: config.silent});
@@ -71,4 +101,5 @@ module.exports = function (argv) {
 
     //git push
     exec('git push', {silent: config.deepSilent})
+
 };
