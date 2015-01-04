@@ -2,8 +2,18 @@ require('shelljs/global');
 
 var rimraf = require('rimraf');
 var dateFormat = require('dateformat');
+var program = require('commander');
 
-module.exports = function (opts) {
+
+
+module.exports = function (argv) {
+
+    program
+      .version('0.1.2')
+      .option('-m, --message', 'Add Commit message by yourself instead of auto')
+      .parse(argv);
+
+
     //check git is installed or not
     if (!which('git')) {
       throw new Error('You shoule install git first');
@@ -29,8 +39,9 @@ module.exports = function (opts) {
     //已经拉取了的
     //{ code: 0, output: '# On branch master\nnothing to commit (working directory clean)\n' }
     if (exec('git status ' + dirpath, {silent: config.silent}).code !== 0) {
-        cd('/..');
-        rimraf(dirpath);
+        cd('./..');
+        //use rimraf.sync
+        rimraf.sync(dirpath);
 
         //TODO check remote more intelligent
         if (exec('git clone ' + config.remote + ' ' + dirpath).code !== 0) {
