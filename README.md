@@ -29,6 +29,8 @@ wd -h
 wd -c git@github.com:components/zepto.git
 ```
 
+多次执行是无效的，自动判断了
+
 
 ## commit myself
 
@@ -43,6 +45,8 @@ wd -m "i do not like auto commit msg"
 ```wd
 wd
 ```
+
+多次执行是无效的，自动判断了
 
 #### 注释：
 
