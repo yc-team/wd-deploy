@@ -54,14 +54,12 @@ module.exports = function (argv) {
     //TODO 
     var dirpath = cwd;
     cd(dirpath);
-    console.log(1 + '' + dirpath);
 
     //已经拉取了的
     //{ code: 0, output: '# On branch master\nnothing to commit (working directory clean)\n' }
     if (exec('git status ' + dirpath, {silent: config.silent}).code !== 0) {
         cd('./..');
 
-        console.log(process.cwd());
 
         //use rimraf.sync
         //rimraf.sync(dirpath);
@@ -69,7 +67,8 @@ module.exports = function (argv) {
         //mkdir(dirpath);
 
         if (exec('git clone ' + config.remote + ' ' + dirpath).code !== 0) {
-            throw new Error('Git clone failed');
+            //TODO more friendly?
+            throw new Error('Git clone failed, use wd -c <repo url> first');
             exit(1);
         } else {
             config.isCloned = true;
@@ -78,8 +77,6 @@ module.exports = function (argv) {
         config.isCloned = true;
     }
 
-    console.log(2 + '' + dirpath);
-    console.log(config);
 
     cd(dirpath);
 

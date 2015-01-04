@@ -1,6 +1,6 @@
 {
   "name": "wd-deploy",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "command line tools for git",
   "main": "index.js",
   "bin": {
