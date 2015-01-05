@@ -11,9 +11,7 @@ branch			分支支持，默认是 master
 
 ## depend
 
-```javascript
-install node in <a href="http://nodejs.org/">官网</a>
-```
+install node in <a target="_blank" href="http://nodejs.org/">官网</a>
 
 ## how to install
 
