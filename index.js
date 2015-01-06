@@ -3,6 +3,7 @@ require('shelljs/global');
 var dateFormat = require('dateformat');
 var program = require('commander');
 
+var version = require("../package.json").version;
 
 
 module.exports = function (argv) {
@@ -23,9 +24,8 @@ module.exports = function (argv) {
         config.remote = val;
     }
     
-    //TDOO version auto from pkg
     program
-      .version('0.2.5')
+      .version(version)
       .option('-m, --message', 'Add Commit message by yourself instead of auto')
       .option('-c, --clone <repo url>', 'Clone the defined github url at first', cloneFn)
       .option('-b, --branch', 'Choose a repo branch,default value is master')

@@ -3,11 +3,6 @@ wd-deploy
 
 node 版本的命令行工具，来自动执行 git 操作：
 
-```javascript
-remote			远程的 git 库，一般就是wandoulabs上的
-silent    		Do not echo program output to console
-branch			分支支持，默认是 master
-```
 
 ## depend
 
@@ -15,11 +10,13 @@ install node in <a target="_blank" href="http://nodejs.org/">官网</a>
 
 ## how to install
 
+shoule be install -g
+
 ```javascript
 sudo npm install wd-deploy -g
 ```
 
-## how to use
+## how to get help
 
 ```javascript
 wd -h
@@ -36,11 +33,13 @@ wd -c git@github.com:components/zepto.git
 多次执行是无效的，自动判断了
 
 
-## commit myself
+
+## commit by myself
 
 ```javascript
 wd -m "i do not like auto commit msg"
 ```
+
 
 ## all auto by God
 
@@ -51,6 +50,15 @@ wd
 ```
 
 多次执行是无效的，自动判断了
+
+
+## support branch
+
+> default branch is master
+
+```javascript
+wd -b test_branch
+```
 
 #### 注释：
 
