@@ -10,7 +10,7 @@ install node in <a target="_blank" href="http://nodejs.org/">官网</a>
 
 ## how to install
 
-shoule be install -g
+should be install -g
 
 ```javascript
 sudo npm install wd-deploy -g
