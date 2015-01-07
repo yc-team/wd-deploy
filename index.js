@@ -3,7 +3,7 @@ require('shelljs/global');
 var dateFormat = require('dateformat');
 var program = require('commander');
 
-var version = require("../package.json").version;
+var version = require("./package.json").version;
 
 
 module.exports = function (argv) {
