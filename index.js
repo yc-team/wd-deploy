@@ -94,7 +94,7 @@ module.exports = function (argv) {
 
     //git commit 
     //add time or other msg your like
-    exec('git commit -m "' + config.message + dateFormat(new Date(), 'yyyy-mm-dd hh:MM:ss') + '"', {silent: config.deepSilent});
+    exec('git commit -m "' + config.message + dateFormat(new Date(), 'yyyy-mm-dd HH:MM:ss') + '"', {silent: config.deepSilent});
 
     //git push
     exec('git push', {silent: config.deepSilent})
