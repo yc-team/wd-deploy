@@ -1,7 +1,7 @@
 wd-deploy
 ===========
 
-node 版本的命令行工具，来自动执行 git 操作：
+node 版本的命令行工具，用来自动执行 git 操作：
 
 
 ## depend
